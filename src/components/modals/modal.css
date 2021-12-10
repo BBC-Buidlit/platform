@@ -1,0 +1,107 @@
+.modal-overlay {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	background-color: rgba(0, 0, 0, 0.5);
+	top: 0;
+	left: 0;
+	z-index: 10;
+}
+
+.modal-overlay-transparent {
+	background-color: transparent;
+}
+
+.modal-overlay-dark {
+	background-color: var(--dark-bg);
+}
+.modal-overlay-z-top {
+	z-index: 21;
+}
+
+.modal {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	height: 60%;
+	width: 90%;
+	margin: auto;
+	overflow: hidden;
+	box-shadow: 0px 0px 15px 3px rgba(0, 0, 0, 0.2);
+}
+
+.modal-fit-content,
+.modal-fit-content .card-content {
+	height: fit-content;
+}
+.modal .card-content {
+	overflow: auto;
+}
+.modal-show-overflow,
+.modal-show-overflow .card-content {
+	overflow: visible;
+}
+.modal-sheet {
+	width: 100%;
+	top: initial;
+}
+
+.modal-header {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 20px;
+}
+
+.modal-header-shadowed {
+	box-shadow: 0px 4px 30px 2px rgba(0, 0, 0, 0.1);
+	height: 48px;
+	padding: 0 var(--mob-content-padding-small);
+}
+
+.modal-header > h2 {
+	font-size: 1.4rem;
+	font-weight: 600;
+	display: flex;
+}
+
+.modal-header-shadowed > h2 {
+	font-weight: 500;
+	font-size: 1.29rem;
+	position: relative;
+	top: 2px;
+}
+
+.modal-header > h2 > span {
+	margin-right: 3px;
+	color: var(--theme-1);
+	font-size: 1.8rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.modal-header-shadowed > h2 > span {
+	margin-right: 6px;
+	color: var(--text-light-2);
+	font-size: 2rem;
+	position: relative;
+	top: -2px;
+}
+
+.modal-header-action > span {
+	margin: 0 3px;
+	font-size: 1.5rem;
+	color: var(--text-light-4);
+}
+
+.modal-header-action-done {
+	font-weight: 700;
+}
+
+.modal-header-shadowed .modal-header-action-done {
+	font-weight: 500;
+}

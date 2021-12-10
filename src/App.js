@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import createApiAxios from "./utils/createApiAxios";
+import UserManager from "./components/UserManager";
+import ModalManager from "./components/ModalManager";
+import LoginPage from "./pages/LoginPage";
+import { BrowserRouter as Router } from "react-router-dom";
+import RestrictedRoute, { PROTECTION } from "./components/RestrictedRoute";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		<Router>
+			<UserManager>
+				<ModalManager>
+					<RestrictedRoute
+						protection={PROTECTION.AGNOSTIC}
+						path="/login"
+					>
+						<LoginPage />
+					</RestrictedRoute>
+				</ModalManager>
+			</UserManager>
+		</Router>
+	);
 }
 
+export const apiAxios = createApiAxios();
 export default App;

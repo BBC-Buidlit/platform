@@ -1,0 +1,106 @@
+import {
+	MdCheck,
+	MdClose,
+	MdOutlineContentCopy,
+	MdReplay,
+	MdContentCopy,
+} from "react-icons/md";
+import {
+	IoIosArrowRoundForward,
+	IoIosShuffle,
+	IoMdArrowRoundForward,
+	IoIosAddCircle,
+	IoIosBarcode,
+} from "react-icons/io";
+import { IoPhonePortraitOutline } from "react-icons/io5";
+import { CgInfinity } from "react-icons/cg";
+import {
+	AiOutlineHeart,
+	AiFillHeart,
+	AiOutlineTags,
+	AiOutlinePause,
+	AiFillMobile,
+} from "react-icons/ai";
+import { FaUserCircle, FaRegEnvelope } from "react-icons/fa";
+import {
+	FiUser,
+	FiSkipForward,
+	FiSkipBack,
+	FiShare,
+	FiCornerUpRight,
+} from "react-icons/fi";
+import { WiSunrise } from "react-icons/wi";
+import {
+	HiOutlineChevronLeft,
+	HiOutlineChevronDown,
+	HiOutlineChevronUp,
+	HiOutlineUserCircle,
+	HiCheck,
+	HiMinus,
+	HiDocument,
+	HiOutlineChevronRight,
+	HiOutlinePhone,
+} from "react-icons/hi";
+import { RiLock2Fill, RiSwapBoxFill, RiGridFill } from "react-icons/ri";
+import {
+	BsFilter,
+	BsGlobe,
+	BsPlayCircleFill,
+	BsFillPlayFill,
+	BsFillCartPlusFill,
+	BsBroadcast,
+	BsPlusSquare,
+	BsPlay,
+	BsLaptop,
+	BsLock,
+} from "react-icons/bs";
+
+export {
+	MdCheck as CheckIcon,
+	HiCheck as CheckIconRounded,
+	MdClose as CrossIcon,
+	HiMinus as MinusIcon,
+	IoMdArrowRoundForward as RightArrowIcon,
+	IoIosArrowRoundForward as RightArrowLongIcon,
+	HiOutlineChevronLeft as LeftChevronIcon,
+	HiOutlineChevronRight as RightChevronIcon,
+	HiOutlineChevronDown as DownChevronIcon,
+	HiOutlineChevronUp as UpChevronIcon,
+	MdOutlineContentCopy as CopyActionIcon,
+	CgInfinity as CoopIcon,
+	AiFillHeart as HeartIcon,
+	AiOutlineHeart as HeartOutlineIcon,
+	FaUserCircle as UserIconCircle,
+	HiOutlineUserCircle as UserOutlineIcon,
+	FiUser as UserIcon,
+	IoIosShuffle as ShuffleIcon,
+	WiSunrise as SunriseIcon,
+	BsFilter as FilterIcon,
+	BsGlobe as GlobeIcon,
+	BsPlayCircleFill as PlayIcon,
+	BsFillPlayFill as PlayTriangleIcon,
+	RiGridFill as GridIcon,
+	HiDocument as TagIcon,
+	AiOutlineTags as PriceTagIcon,
+	BsFillCartPlusFill as CartIcon,
+	MdReplay as ReplayIcon,
+	RiSwapBoxFill as MixIcon,
+	RiLock2Fill as LockIcon,
+	BsLock as LockOutlineIcon,
+	BsBroadcast as PublishedIcon,
+	IoIosAddCircle as AddIcon,
+	MdContentCopy as CopyIcon,
+	FaRegEnvelope as EnvelopeIcon,
+	HiOutlinePhone as PhoneIcon,
+	IoPhonePortraitOutline as PhoneFrameIcon,
+	BsPlusSquare as PlusIcon,
+	AiOutlinePause as PauseIcon,
+	FiSkipForward as ForwardIcon,
+	FiSkipBack as BackwardIcon,
+	BsPlay as PlayOutlineIcon,
+	FiShare as ShareIcon,
+	AiFillMobile as MobileIcon,
+	FiCornerUpRight as TopRightIcon,
+	BsLaptop as LaptopIcon,
+	IoIosBarcode as BarCodeIcon,
+};
