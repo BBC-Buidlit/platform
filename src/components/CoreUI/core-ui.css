@@ -1,11 +1,11 @@
 :root {
 	--font: "Readex Pro";
-	font-size: 7.5pt; /* 7.5pt = 10px => [1 rem = 10px] */
+	font-size: 8pt; /* 7.5pt = 10px => [1 rem = 10px] */
 
 	--easing: cubic-bezier(0.68, 0.28, 0.82, 0.64);
 	--easing-slick: cubic-bezier(0.02, 0.98, 0.65, 1.15);
 
-	--text: #010204;
+	--text: #161f31;
 	--text-light-1: #1e2434;
 	--text-light-2: #413f40;
 	--text-light-3: #575859;
@@ -28,7 +28,7 @@
 	--dark-bg-grad-1: linear-gradient(181.02deg, #333333 0.24%, #010204 98.5%);
 	--dark-bg-grad-2: linear-gradient(181.02deg, #494949 0.24%, #222 98.5%);
 
-	--dark-bg-light-1: #242424;
+	--dark-bg-light-1: #111;
 	--dark-bg-light-2: #3b3b3b;
 	--dark-bg-light-3: #2a323f;
 
@@ -55,9 +55,9 @@
 
 	--metal-grad-1: linear-gradient(87.45deg, #9fa7b4 -2.46%, #687181 115.9%);
 
-	--theme-1: #5792ff;
+	--theme-1: #5eb2ff;
 	--theme-shadow: #5792ff55;
-	--theme-2: #7d38ff;
+	--theme-2: #525be7;
 
 	/* --theme-light-2: #feeedb; */
 	--theme-grad-1: linear-gradient(
@@ -1059,6 +1059,7 @@ textarea.inp {
 .card-content {
 	height: 100%;
 	border-radius: var(--card-curve);
+	color: var(--text);
 }
 .card-dark {
 	background: var(--dark-bg);

@@ -47,12 +47,12 @@ const RestrictedRoute = memo(
 			}
 		}, [protection, user, loading, error, fetchUser, authStatus]);
 
-		useEffect(() => {
-			if (!error) {
-				return;
-			}
-			return logout();
-		}, [error, logout]);
+		// useEffect(() => {
+		// 	if (!error) {
+		// 		return;
+		// 	}
+		// 	return logout();
+		// }, [error, logout]);
 
 		useEffect(() => {
 			if (!data) {

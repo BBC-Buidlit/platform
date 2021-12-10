@@ -34,6 +34,7 @@ export const Button = memo(
 		large = false,
 		disabled = false,
 		fullWidth = false,
+
 		...props
 	}) => {
 		const renderedButton = useMemo(
@@ -66,6 +67,7 @@ export const Button = memo(
 				transparent,
 				className,
 				middle,
+
 				rounded,
 				circular,
 				dark,

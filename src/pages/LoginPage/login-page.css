@@ -1,0 +1,45 @@
+.login-page {
+	background: var(--light-bg);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: row;
+}
+
+.login-page-hero {
+	width: 450px;
+	position: relative;
+	z-index: 1;
+	flex: 0 0 auto;
+	box-shadow: none;
+}
+
+.login-page-hero .card-content p {
+	font-size: 1.6rem;
+	margin: 30px 0;
+	color: var(--text-light-3);
+	font-weight: 300;
+}
+
+.login-page-hero .card-content .btn {
+	width: 100%;
+}
+
+.login-half {
+	flex: 0 0 auto;
+	width: calc(50% - 0px);
+	height: calc(100% - 0px);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	/* border-radius: 20px; */
+	background-image: var(--theme-grad-1);
+}
+
+.login-half:nth-of-type(2) {
+	background-image: none;
+}
+
+.login-half:nth-of-type(1) > img {
+	width: 70%;
+}
