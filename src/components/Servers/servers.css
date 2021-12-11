@@ -1,0 +1,42 @@
+.servers {
+	margin-top: 25px;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-start;
+	justify-content: center;
+}
+
+.server {
+	width: calc(33% - 20px);
+	margin: 10px;
+	border: 2px solid transparent;
+	transition: border-color 0.4s, box-shadow 0.3s;
+}
+
+.server:hover {
+	border-color: var(--theme-1);
+	box-shadow: 0px 6px 20px 1px var(--theme-1-light);
+}
+
+.server .card-content {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+}
+
+.server-name {
+	font-weight: 400;
+	color: var(--text-light-3);
+}
+
+.server-icon {
+	height: 50px;
+	width: 50px;
+	margin-bottom: 12px;
+	border-radius: 50%;
+	object-fit: cover;
+	background-color: var(--theme-1);
+}

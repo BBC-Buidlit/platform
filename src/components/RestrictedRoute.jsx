@@ -1,13 +1,13 @@
-import React, { memo, useEffect, useMemo, useRef } from "react";
+import React, { memo, useCallback, useEffect } from "react";
 import { Route, Redirect } from "react-router-dom";
 import isAuth from "../utils/isAuth";
 import useIdentity from "../hooks/useIdentity";
 import { FETCH_USER_URL } from "../conf";
 import { Loader } from "./CoreUI";
 import useResource from "../hooks/useResource";
-import useLogout from "../hooks/useLogout";
 
-const DEBUG = false;
+import { Switch } from "react-router-dom";
+const DEBUG = true;
 const logger = (log) => (DEBUG ? console.log(log) : null);
 
 export const PROTECTION = {
@@ -17,11 +17,14 @@ export const PROTECTION = {
 };
 
 const RestrictedRoute = memo(
-	({ children, path, exact, protection = PROTECTION.AUTH, ...props }) => {
-		const { user, setUser } = useIdentity();
-		const logout = useLogout();
-
-		const fetchedRef = useRef(false);
+	({
+		children,
+		path,
+		exact = true,
+		protection = PROTECTION.AUTH,
+		...props
+	}) => {
+		const { user, setUser, fetchedRef } = useIdentity();
 
 		const [{ loading, data, error }, fetchUser] = useResource(
 			{
@@ -30,9 +33,9 @@ const RestrictedRoute = memo(
 			},
 			false
 		);
-		const authStatus = useMemo(() => isAuth()[0], []);
+		const authStatus = isAuth();
 
-		useEffect(() => {
+		const startFetch = useCallback(() => {
 			if (
 				(protection === PROTECTION.AUTH ||
 					(protection === PROTECTION.AGNOSTIC && authStatus)) &&
@@ -45,14 +48,15 @@ const RestrictedRoute = memo(
 				fetchedRef.current = true;
 				fetchUser();
 			}
-		}, [protection, user, loading, error, fetchUser, authStatus]);
-
-		// useEffect(() => {
-		// 	if (!error) {
-		// 		return;
-		// 	}
-		// 	return logout();
-		// }, [error, logout]);
+		}, [
+			protection,
+			user,
+			loading,
+			error,
+			fetchUser,
+			fetchedRef,
+			authStatus,
+		]);
 
 		useEffect(() => {
 			if (!data) {
@@ -62,10 +66,11 @@ const RestrictedRoute = memo(
 			setUser({
 				...data,
 			});
-		}, [data, setUser]);
+		}, [data, setUser, fetchedRef]);
 
-		const renderChildren = useMemo(() => {
-			/*
+		const render = useCallback(
+			({ match: { path: matchedPath } }) => {
+				/*
 				4 cases
 				0 -> !protect && !authStatus - Normally render children
 				1 -> !protect && authStatus - Invalid state - Send to root (XOR hit) 
@@ -73,41 +78,49 @@ const RestrictedRoute = memo(
 				3 -> protect && authStatus - Wait for user, and then proceed to render children.
 			*/
 
-			if (
-				(protection === PROTECTION.AUTH) ^ authStatus &&
-				protection !== PROTECTION.AGNOSTIC
-			) {
-				return <Redirect to={"/"} />;
-			}
+				if (matchedPath !== path) return null;
 
-			if (
-				!(protection === PROTECTION.AUTH || authStatus) ||
-				(protection === PROTECTION.AGNOSTIC && !authStatus)
-			) {
-				return children;
-			}
+				startFetch();
 
-			if (
-				(protection === PROTECTION.AUTH ||
-					(protection === PROTECTION.AGNOSTIC && authStatus)) &&
-				!(user || error)
-			) {
-				return <Loader center />;
-			}
+				if (
+					(protection === PROTECTION.AUTH) ^ authStatus &&
+					protection !== PROTECTION.AGNOSTIC
+				) {
+					return <Redirect to={"/"} />;
+				}
 
-			if (user) {
-				return children;
-			} else if (error) {
-				return "Whoops! Can't fetch user";
-			} else {
-				return "An unknown error occurred. Please try again later";
-			}
-		}, [authStatus, protection, children, error, user]);
+				if (
+					!(protection === PROTECTION.AUTH || authStatus) ||
+					(protection === PROTECTION.AGNOSTIC && !authStatus)
+				) {
+					return children;
+				}
+
+				if (
+					(protection === PROTECTION.AUTH ||
+						(protection === PROTECTION.AGNOSTIC && authStatus)) &&
+					!(user || error)
+				) {
+					return <Loader center />;
+				}
+
+				if (user) {
+					return children;
+				} else if (error) {
+					return "Whoops! Can't fetch user";
+				} else {
+					return "An unknown error occurred. Please try again later";
+				}
+			},
+			[authStatus, path, startFetch, protection, children, error, user]
+		);
 
 		return (
-			<Route path={path} {...props}>
-				{renderChildren}
-			</Route>
+			<Switch>
+				<Route path={path} exact={exact} {...props}>
+					{render}
+				</Route>
+			</Switch>
 		);
 	}
 );

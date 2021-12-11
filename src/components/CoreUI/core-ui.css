@@ -13,6 +13,8 @@
 	--text-light-5: #91909a;
 	--text-light-6: #b2b2b2; /* FOR PLACEHOLDERS */
 
+	--nav-height: 80px;
+	--content-width: 80%;
 	--white-text: #fff;
 
 	--light-bg: #fff;
@@ -49,13 +51,10 @@
 	);
 	--bg-blur: 12px;
 
-	--theme-light-1: #e8f0ff;
-	--theme-light-2: #cbdeff;
-	--theme-light-3: #abc8ff;
-
 	--metal-grad-1: linear-gradient(87.45deg, #9fa7b4 -2.46%, #687181 115.9%);
 
 	--theme-1: #5eb2ff;
+	--theme-1-light: #5eb2ff44;
 	--theme-shadow: #5792ff55;
 	--theme-2: #525be7;
 
@@ -165,19 +164,16 @@ body {
 }
 
 .auth-page {
+	padding-top: calc(var(--nav-height) + 60px);
 	background-color: var(--light-bg-dark-1);
-	height: initial;
-	min-height: 100vh;
-	padding-bottom: 90px;
+	overflow: auto;
+	padding-bottom: 30px;
 }
-@media only screen and (min-width: 800px) {
-	.auth-page {
-		background-color: var(--dark-bg);
-		padding-bottom: 0px;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
+
+.page-content {
+	width: var(--content-width);
+	margin: auto;
+	padding: 0 20px;
 }
 
 .gradient-text {
@@ -890,9 +886,10 @@ textarea.inp {
 }
 
 .btn-small {
-	--btn-padding: 5px 8px;
-	--btn-height: 28px;
-	font-weight: 500;
+	--btn-padding: 4px 12px;
+	--btn-height: 32px;
+	font-weight: 400;
+	font-size: 1.2rem;
 	border-radius: 3px;
 }
 
@@ -1051,7 +1048,7 @@ textarea.inp {
 .card {
 	--card-curve: var(--curve);
 	background: var(--light-bg);
-	box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.1);
+	box-shadow: 0px 6px 20px 1px rgba(0, 0, 0, 0.07);
 	border-radius: var(--card-curve);
 	font-size: 1.2rem;
 	width: 100%;

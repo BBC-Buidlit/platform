@@ -1,5 +1,5 @@
 import { useCallback, useContext, useEffect, useRef } from "react";
-import { ModalContext } from "../components/managers/ModalManager";
+import { ModalContext } from "../components/ModalManager";
 
 const useModalCount = (open) => {
 	const modalCountRef = useContext(ModalContext);

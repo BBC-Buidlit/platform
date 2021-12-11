@@ -29,8 +29,8 @@ export const boomTransition = {
 export const pageTransition = {
 	type: "spring",
 	stiffness: 2000,
-	mass: 5,
-	damping: 140,
+	mass: 20,
+	damping: 260,
 };
 
 export const slideTransition = {
@@ -346,6 +346,27 @@ const anim = {
 			scale: 0.5,
 			opacity: 0,
 			transition: easeOutTransition(0.8),
+		},
+	},
+
+	pageContent: {
+		initial: {
+			scale: 0.9,
+			opacity: 0.6,
+			y: 20,
+			transition: easeOutTransition(0.4),
+		},
+		animate: {
+			scale: 1,
+			opacity: 1,
+			y: 0,
+			transition: easeOutTransition(0.4),
+		},
+		exit: {
+			scale: 0.9,
+			opacity: 0.6,
+			y: -20,
+			transition: easeOutTransition(0.4),
 		},
 	},
 

@@ -15,7 +15,6 @@ const tokenStorage = {
 	},
 	clear() {
 		localStorage.clear();
-		localStorage.setItem("isExisting", "true");
 	},
 };
 

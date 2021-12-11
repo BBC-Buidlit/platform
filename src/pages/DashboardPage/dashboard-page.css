@@ -1,0 +1,11 @@
+.dashboard-sub {
+	font-size: 3rem;
+	font-weight: 300;
+	color: var(--text-light-3);
+}
+.dashboard-heading {
+	font-size: 5rem;
+	font-weight: 700;
+	margin-top: 12px;
+	display: block;
+}

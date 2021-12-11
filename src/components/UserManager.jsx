@@ -1,4 +1,4 @@
-import { createContext, memo, useState } from "react";
+import { createContext, memo, useRef, useState } from "react";
 
 export const UserContext = createContext();
 
@@ -16,9 +16,10 @@ export const getUserShortName = (user) => {
 
 const UserManager = memo(({ children }) => {
 	const [user, setUser] = useState(null);
+	const fetchedRef = useRef(false);
 
 	return (
-		<UserContext.Provider value={{ user, setUser, error: false }}>
+		<UserContext.Provider value={{ user, setUser, fetchedRef }}>
 			{children}
 		</UserContext.Provider>
 	);

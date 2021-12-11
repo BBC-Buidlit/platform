@@ -48,6 +48,27 @@
 	top: initial;
 }
 
+.modal-full-screen {
+	height: 100vh;
+	width: 100vw;
+	border-radius: 0px;
+}
+
+.modal-full-closer {
+	position: absolute;
+	top: 35px;
+	right: 45px;
+	font-size: 3rem;
+	cursor: pointer;
+	height: 60px;
+	width: 60px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: var(--light-bg-dark-2);
+	border-radius: 50%;
+}
+
 .modal-header {
 	width: 100%;
 	display: flex;

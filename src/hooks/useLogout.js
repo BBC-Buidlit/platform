@@ -10,8 +10,8 @@ const useLogout = () => {
 
 	const logout = useCallback(() => {
 		tokenStorage.clear();
-		history.push("/");
 		setUser(null);
+		history.push("/login");
 	}, [history, setUser]);
 
 	return logout;

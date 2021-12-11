@@ -9,9 +9,11 @@ import {
 	useState,
 } from "react";
 import { CheckIcon, MinusIcon } from "../icons";
-import { standardEaseOutTransition } from "../../utils/anim";
+import anim, { standardEaseOutTransition } from "../../utils/anim";
 import mergeRefs from "../../utils/mergeRefs";
 import "./core-ui.css";
+import useNav from "../../hooks/useNav";
+import { NAV_ITEMS } from "../NavManager";
 
 export const Button = memo(
 	({
@@ -432,10 +434,41 @@ export const Page = memo(
 			<motion.section
 				className={`page ${className}`}
 				ref={ref}
+				variants={anim.pageContent}
+				initial="initial"
+				animate="animate"
+				exit="exit"
 				{...props}
 			>
 				{children}
 			</motion.section>
 		);
 	})
+);
+
+export const AuthPage = memo(({ className = "", children, ...rest }) => {
+	useNav(NAV_ITEMS.HOME);
+	return (
+		<Page className={`auth-page ${className}`} {...rest}>
+			<main className="page-content">{children}</main>
+		</Page>
+	);
+});
+
+// type = success, error, theme, dark, transparent
+export const StatusLabel = memo(
+	({ children, type = "error", className = "", ...props }) => {
+		return (
+			<motion.div
+				className={`status-label status-label-${type} ${className}`}
+				variants={anim.verticalSlide}
+				initial="initial"
+				animate="animate"
+				exit="exit"
+				{...props}
+			>
+				{children}
+			</motion.div>
+		);
+	}
 );

@@ -1,11 +1,20 @@
 import { memo } from "react";
-import { Page } from "../../components/CoreUI";
+import { AuthPage, GradientText } from "../../components/CoreUI";
+import Servers from "../../components/Servers";
+import useIdentity from "../../hooks/useIdentity";
+import "./dashboard-page.css";
 
 const DashboardPage = memo(() => {
+	const { user } = useIdentity();
+
 	return (
-		<Page>
-			<h2>Welcome!</h2>
-		</Page>
+		<AuthPage className="dashboard-page">
+			<h3 className="dashboard-sub">Welcome</h3>
+			<GradientText className="dashboard-heading">
+				{user.username}
+			</GradientText>
+			<Servers />
+		</AuthPage>
 	);
 });
 

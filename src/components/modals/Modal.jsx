@@ -2,67 +2,10 @@ import { memo, useState, useEffect, useCallback } from "react";
 import ReactDOM from "react-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import anim from "../../utils/anim";
-import { Card, GradientText, Loader } from "../CoreUI";
+import { Card } from "../CoreUI";
 import "./modal.css";
 import useModalCount from "../../hooks/useModalCount";
-
-export const ModalHeader = memo(
-	({
-		heading,
-		icon,
-		doneText = "Done",
-		showCancel = true,
-		secondaryText = null,
-		onSecondaryAction = null,
-		showDone = true,
-		onClose,
-		loading = false,
-		onDone,
-		shadowed,
-		...rest
-	}) => {
-		return (
-			<header
-				className={`modal-header ${
-					shadowed ? "modal-header-shadowed" : ""
-				}`}
-				{...rest}
-			>
-				<h2>
-					<span>{icon}</span>
-					{heading}
-				</h2>
-				<section className="modal-header-action">
-					{loading ? (
-						<Loader small />
-					) : (
-						<>
-							{showCancel && (
-								<span onClick={onClose}>Cancel</span>
-							)}
-							{secondaryText && (
-								<span
-									className="modal-header-action-done"
-									onClick={onSecondaryAction}
-								>
-									{secondaryText}
-								</span>
-							)}
-							{showDone && (
-								<GradientText
-									onClick={onDone}
-									className="modal-header-action-done"
-								>
-									{doneText}
-								</GradientText>
-							)}
-						</>
-					)}
-				</section>
-			</header>
-		);
-	}
-);
+import { CrossIcon } from "../icons";
 
 // overlayType -> transparent, dark
 const Modal = memo(
@@ -79,6 +22,7 @@ const Modal = memo(
 		overlayClose = true,
 		fitContent = false,
 		showOverflow = false,
+		fullScreen,
 		...rest
 	}) => {
 		const [root, setRoot] = useState(false);
@@ -143,13 +87,21 @@ const Modal = memo(
 						<Card
 							className={`modal ${sheet ? "modal-sheet" : ""} ${
 								fitContent ? "modal-fit-content" : ""
-							} ${
-								showOverflow ? "modal-show-overflow" : ""
+							} ${showOverflow ? "modal-show-overflow" : ""} ${
+								fullScreen ? "modal-full-screen" : ""
 							} ${className}`}
 							flatBottom={sheet}
 							{...rest}
 							variants={anim.modal}
 						>
+							{fullScreen && (
+								<section
+									className="modal-full-closer"
+									onClick={onClose}
+								>
+									{<CrossIcon />}
+								</section>
+							)}
 							{typeof children === "function"
 								? children(onClose)
 								: children}

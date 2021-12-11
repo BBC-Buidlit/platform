@@ -6,30 +6,40 @@ import { BrowserRouter as Router } from "react-router-dom";
 import RestrictedRoute, { PROTECTION } from "./components/RestrictedRoute";
 import ConnectPage from "./pages/ConnectPage";
 import DashboardPage from "./pages/DashboardPage";
+import RootPage from "./pages/RootPage";
+import NavManager from "./components/NavManager";
 
 function App() {
 	return (
 		<Router>
 			<UserManager>
 				<ModalManager>
-					<RestrictedRoute
-						protection={PROTECTION.UN_AUTH}
-						path="/login"
-					>
-						<LoginPage />
-					</RestrictedRoute>
-					<RestrictedRoute
-						protection={PROTECTION.AGNOSTIC}
-						path="/connect"
-					>
-						<ConnectPage />
-					</RestrictedRoute>
-					<RestrictedRoute
-						protection={PROTECTION.AUTH}
-						path="/dashboard"
-					>
-						<DashboardPage />
-					</RestrictedRoute>
+					<NavManager>
+						<RestrictedRoute
+							protection={PROTECTION.AGNOSTIC}
+							path="/"
+						>
+							<RootPage />
+						</RestrictedRoute>
+						<RestrictedRoute
+							protection={PROTECTION.UN_AUTH}
+							path="/login"
+						>
+							<LoginPage />
+						</RestrictedRoute>
+						<RestrictedRoute
+							protection={PROTECTION.AGNOSTIC}
+							path="/connect"
+						>
+							<ConnectPage />
+						</RestrictedRoute>
+						<RestrictedRoute
+							protection={PROTECTION.AUTH}
+							path="/dashboard"
+						>
+							<DashboardPage />
+						</RestrictedRoute>
+					</NavManager>
 				</ModalManager>
 			</UserManager>
 		</Router>
