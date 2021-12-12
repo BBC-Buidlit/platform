@@ -41,7 +41,12 @@ import {
 	HiOutlineChevronRight,
 	HiOutlinePhone,
 } from "react-icons/hi";
-import { RiLock2Fill, RiSwapBoxFill, RiGridFill } from "react-icons/ri";
+import {
+	RiLock2Fill,
+	RiSwapBoxFill,
+	RiGridFill,
+	RiBitCoinLine,
+} from "react-icons/ri";
 import {
 	BsFilter,
 	BsGlobe,
@@ -103,4 +108,5 @@ export {
 	FiCornerUpRight as TopRightIcon,
 	BsLaptop as LaptopIcon,
 	IoIosBarcode as BarCodeIcon,
+	RiBitCoinLine as CoinIcon,
 };

@@ -1,6 +1,7 @@
 import { memo } from "react";
+import AddedServers from "../../components/AddedServers";
 import { AuthPage, GradientText } from "../../components/CoreUI";
-import Servers from "../../components/Servers";
+
 import useIdentity from "../../hooks/useIdentity";
 import "./dashboard-page.css";
 
@@ -13,7 +14,7 @@ const DashboardPage = memo(() => {
 			<GradientText className="dashboard-heading">
 				{user.username}
 			</GradientText>
-			<Servers />
+			<AddedServers />
 		</AuthPage>
 	);
 });

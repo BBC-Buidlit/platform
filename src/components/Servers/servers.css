@@ -6,11 +6,45 @@
 	justify-content: center;
 }
 
+.servers-none {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	justify-content: center;
+	padding: 20px;
+	border-radius: 12px;
+	background-color: var(--light-bg);
+	width: 100%;
+	text-align: center;
+}
+
+.servers-none span {
+	font-size: 5rem;
+	color: var(--theme-1);
+}
+
+.servers-none h3 {
+	font-size: 2rem;
+	color: var(--text-light-2);
+}
+
+.servers-none p {
+	font-size: 1.6rem;
+	margin-top: 10px;
+	max-width: 400px;
+	color: var(--text-light-3);
+}
+
 .server {
 	width: calc(33% - 20px);
 	margin: 10px;
 	border: 2px solid transparent;
 	transition: border-color 0.4s, box-shadow 0.3s;
+}
+
+.servers-wide .server {
+	width: calc(49% - 20px);
 }
 
 .server:hover {
@@ -25,6 +59,7 @@
 	align-items: center;
 	justify-content: center;
 	cursor: pointer;
+	padding: 12px;
 }
 
 .server-name {
@@ -35,8 +70,13 @@
 .server-icon {
 	height: 50px;
 	width: 50px;
-	margin-bottom: 12px;
+	margin-bottom: 6px;
 	border-radius: 50%;
 	object-fit: cover;
 	background-color: var(--theme-1);
+}
+
+.server .btn,
+.server .loader {
+	margin-top: 15px;
 }

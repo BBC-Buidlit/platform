@@ -2,10 +2,21 @@ import { memo, useState, useEffect, useCallback } from "react";
 import ReactDOM from "react-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import anim from "../../utils/anim";
-import { Card } from "../CoreUI";
+import { Card, CardHeading } from "../CoreUI";
 import "./modal.css";
 import useModalCount from "../../hooks/useModalCount";
 import { CrossIcon } from "../icons";
+
+export const ModalHeader = memo(({ onClose, heading = "" }) => {
+	return (
+		<header className="modal-header">
+			<CardHeading>{heading}</CardHeading>
+			<section className="modal-closer" onClick={onClose}>
+				<CrossIcon />
+			</section>
+		</header>
+	);
+});
 
 // overlayType -> transparent, dark
 const Modal = memo(

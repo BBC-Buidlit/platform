@@ -65,64 +65,27 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	background-color: var(--light-bg-dark-2);
+	background-color: rgba(100, 100, 100, 0.2);
 	border-radius: 50%;
 }
 
 .modal-header {
-	width: 100%;
 	display: flex;
-	align-items: center;
+	align-items: flex-start;
 	justify-content: space-between;
+	height: 55px;
 	margin-bottom: 20px;
+	border-bottom: 1px solid var(--light-bg-dark-3);
 }
-
-.modal-header-shadowed {
-	box-shadow: 0px 4px 30px 2px rgba(0, 0, 0, 0.1);
-	height: 48px;
-	padding: 0 var(--mob-content-padding-small);
-}
-
-.modal-header > h2 {
-	font-size: 1.4rem;
-	font-weight: 600;
-	display: flex;
-}
-
-.modal-header-shadowed > h2 {
-	font-weight: 500;
-	font-size: 1.29rem;
-	position: relative;
-	top: 2px;
-}
-
-.modal-header > h2 > span {
-	margin-right: 3px;
-	color: var(--theme-1);
-	font-size: 1.8rem;
+.modal-closer {
+	height: 32px;
+	width: 32px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-}
-
-.modal-header-shadowed > h2 > span {
-	margin-right: 6px;
-	color: var(--text-light-2);
-	font-size: 2rem;
-	position: relative;
-	top: -2px;
-}
-
-.modal-header-action > span {
-	margin: 0 3px;
-	font-size: 1.5rem;
-	color: var(--text-light-4);
-}
-
-.modal-header-action-done {
-	font-weight: 700;
-}
-
-.modal-header-shadowed .modal-header-action-done {
-	font-weight: 500;
+	background-color: var(--light-bg-dark-2);
+	color: var(--text-light-3);
+	border-radius: 50%;
+	font-size: 1.4rem;
+	cursor: pointer;
 }
