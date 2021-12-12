@@ -8,9 +8,11 @@ import ConnectPage from "./pages/ConnectPage";
 import DashboardPage from "./pages/DashboardPage";
 import RootPage from "./pages/RootPage";
 import NavManager from "./components/NavManager";
+import { MetamaskStateProvider } from "use-metamask";
 
 function App() {
 	return (
+		<MetamaskStateProvider>
 		<Router>
 			<UserManager>
 				<ModalManager>
@@ -43,6 +45,7 @@ function App() {
 				</ModalManager>
 			</UserManager>
 		</Router>
+		</MetamaskStateProvider>
 	);
 }
 

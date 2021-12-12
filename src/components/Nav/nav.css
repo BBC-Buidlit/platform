@@ -21,3 +21,7 @@
 	background-color: var(--theme-1);
 	border-radius: 18px;
 }
+
+.margin-right {
+	margin-right: 8px;
+}
