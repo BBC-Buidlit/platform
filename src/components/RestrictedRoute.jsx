@@ -7,6 +7,7 @@ import { Loader } from "./CoreUI";
 import useResource from "../hooks/useResource";
 
 import { Switch } from "react-router-dom";
+import { useMoralis } from "react-moralis";
 const DEBUG = true;
 const logger = (log) => (DEBUG ? console.log(log) : null);
 
@@ -21,6 +22,7 @@ const RestrictedRoute = memo(
 		children,
 		path,
 		exact = true,
+		setup = false,
 		protection = PROTECTION.AUTH,
 		...props
 	}) => {
@@ -68,6 +70,10 @@ const RestrictedRoute = memo(
 			});
 		}, [data, setUser, fetchedRef]);
 
+		const { isAuthenticated: walletAdded } = useMoralis();
+
+		console.log(`walletAdded`, walletAdded);
+
 		const render = useCallback(
 			({ match: { path: matchedPath } }) => {
 				/*
@@ -105,14 +111,34 @@ const RestrictedRoute = memo(
 				}
 
 				if (user) {
-					return children;
+					if ((walletAdded && !setup) || (!walletAdded && setup)) {
+						console.log(`here`);
+						return children;
+					} else {
+						console.log(`sad here`);
+						return (
+							<Redirect
+								to={walletAdded ? "/dashboard" : "/onboarding"}
+							/>
+						);
+					}
 				} else if (error) {
 					return "Whoops! Can't fetch user";
 				} else {
 					return "An unknown error occurred. Please try again later";
 				}
 			},
-			[authStatus, path, startFetch, protection, children, error, user]
+			[
+				authStatus,
+				path,
+				startFetch,
+				protection,
+				children,
+				error,
+				user,
+				walletAdded,
+				setup,
+			]
 		);
 
 		return (

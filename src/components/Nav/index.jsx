@@ -1,7 +1,7 @@
 import { memo, useContext } from "react";
 import useIdentity from "../../hooks/useIdentity";
 import useLogout from "../../hooks/useLogout";
-import useWeb3Provider from "../../hooks/web3/useWeb3Provider";
+
 import { Button } from "../CoreUI";
 import { NavContext } from "../NavManager";
 import "./nav.css";
@@ -11,18 +11,14 @@ const Nav = memo(() => {
 	const logout = useLogout();
 	const { nav } = useContext(NavContext);
 
+	// const {connectToMetamask, metaState} = useWeb3Provider();
 
-	const {connectToMetamask, metaState} = useWeb3Provider();
-	 
-
-	const setupWallet = () => {
-		if(!metaState.isConnected) {
-			connectToMetamask()
-			//TODO: @lakshyabatman, here we need to send walletid to BE and also before that we make sure it's mainnet, this way each user can setup wallet id only once, which will be used by them
-		}
-	}
-
-
+	// const setupWallet = () => {
+	// 	if(!metaState.isConnected) {
+	// 		connectToMetamask()
+	// 		//TODO: @lakshyabatman, here we need to send walletid to BE and also before that we make sure it's mainnet, this way each user can setup wallet id only once, which will be used by them
+	// 	}
+	// }
 
 	return (
 		nav?.visible &&
@@ -32,9 +28,16 @@ const Nav = memo(() => {
 			<header className="nav">
 				<div className="nav-logo" src="" alt="" />
 				<div className="flex-center">
-					<Button small rounded onClick={setupWallet} className="margin-right">
-						{metaState.isConnected ? 'Disconnect' : 'Connect with Metamask'}
-					</Button>
+					{/* <Button
+						small
+						rounded
+						onClick={setupWallet}
+						className="margin-right"
+					>
+						{metaState.isConnected
+							? "Disconnect"
+							: "Connect with Metamask"}
+					</Button> */}
 					<Button small rounded onClick={logout}>
 						Logout
 					</Button>

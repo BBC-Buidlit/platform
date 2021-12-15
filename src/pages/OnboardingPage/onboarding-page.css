@@ -1,0 +1,21 @@
+.onboarding-page {
+	background: var(--theme-grad-1);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.onboarding-card {
+	width: 500px;
+}
+
+.onboarding-desc {
+	margin-top: 15px;
+	font-size: 1.6rem;
+	color: var(--text-light-4);
+	line-height: 24px;
+}
+
+.onboarding-card .btn {
+	margin-top: 20px;
+}
